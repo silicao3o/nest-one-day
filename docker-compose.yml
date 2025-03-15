@@ -1,6 +1,6 @@
 services:
-  postgresql:
-    container_name: postgresql
+  nest-oneday:
+    container_name: nest-oneday
     image: postgres:latest
     restart: always
     ports:

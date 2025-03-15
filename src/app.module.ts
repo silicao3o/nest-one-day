@@ -4,16 +4,17 @@ import { AppService } from './app.service';
 import { ConfigModule } from '@nestjs/config';
 import { DatabaseModule } from './database/database.module';
 import { ProductModule } from './product/product.module';
-import Joi from '@hapi/joi';
+import * as Joi from 'joi';
 
+// 환경변수 타입 체크
 @Module({
   imports: [
     ConfigModule.forRoot({
       validationSchema: Joi.object({
         DB_HOST: Joi.string().required(),
         DB_PORT: Joi.number().required(),
-        DB_USERNAME: Joi.string().required(),
-        DB_PASSWORD: Joi.string().required(),
+        POSTGRES_USER: Joi.string().required(),
+        POSTGRES_PASSWORD: Joi.string().required(),
         POSTGRES_DB: Joi.string().required(),
       }),
     }),
