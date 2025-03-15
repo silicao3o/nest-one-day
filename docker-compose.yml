@@ -1,4 +1,19 @@
 services:
+  elice_backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: elice_backend
+    env_file:
+      - .env
+    command: npm run start:dev
+    ports:
+      - "8012:8012"
+    depends_on:
+      - nest-oneday
+    networks:
+      - elicelab-network
+
   nest-oneday:
     container_name: nest-oneday
     image: postgres:latest
@@ -7,3 +22,9 @@ services:
       - "5432:5432"
     env_file:
       - .env
+    networks:
+      - elicelab-network
+
+networks:
+  elicelab-network:
+    driver: bridge

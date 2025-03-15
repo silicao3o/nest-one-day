@@ -6,6 +6,13 @@ import { DocumentBuilder, OpenAPIObject, SwaggerModule } from '@nestjs/swagger';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
+  app.setGlobalPrefix('api');
+
+  app.enableCors({
+    origin: [],
+    credentials: false,
+  });
+
   const swaggerConfig = new DocumentBuilder()
     .setTitle('Swagger nest-oneday')
     .setDescription('nest-oneday')

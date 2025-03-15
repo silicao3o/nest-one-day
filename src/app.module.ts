@@ -6,6 +6,7 @@ import { DatabaseModule } from './database/database.module';
 import { ProductModule } from './product/product.module';
 import { CommentModule } from './comment/comment.module';
 import * as Joi from 'joi';
+import { HealthCheck, TerminusModule } from '@nestjs/terminus';
 
 // 환경변수 타입 체크
 @Module({
@@ -22,6 +23,7 @@ import * as Joi from 'joi';
     DatabaseModule,
     ProductModule,
     CommentModule,
+    TerminusModule,
   ],
   controllers: [AppController],
   providers: [AppService],

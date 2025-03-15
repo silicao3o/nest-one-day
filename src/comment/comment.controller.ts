@@ -11,6 +11,7 @@ import { CommentService } from './comment.service';
 import { CreateCommentDto } from './dto/create-comment.dto';
 import { UpdateCommentDto } from './dto/update-comment.dto';
 import { Comment } from './entities/comment.entity';
+import { HealthCheck } from '@nestjs/terminus';
 
 @Controller('comment')
 export class CommentController {
@@ -29,6 +30,7 @@ export class CommentController {
   }
 
   @Get()
+  @HealthCheck()
   async findAll(): Promise<Comment[]> {
     return await this.commentService.findAll();
   }
