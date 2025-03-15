@@ -6,19 +6,18 @@ import { DocumentBuilder, OpenAPIObject, SwaggerModule } from '@nestjs/swagger';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  // const configService: ConfigService<any, boolean> = app.get(ConfigService);
-  //
-  // const swaggerConfig = (Omit<OpenAPIObject, "paths"> = new DocumentBuilder())
-  //   .setTitle('Swagger Documentation')
-  //   .setDescription('Documentation')
-  //   .setVersion('1.0')
-  //   .build();
-  //
-  // const document: OpenAPIObject = SwaggerModule.createDocument(
-  //   app,
-  //   swaggerConfig,
-  // );
-  // SwaggerModule.setup('api-docs', app, document);
+  const swaggerConfig = new DocumentBuilder()
+    .setTitle('Swagger nest-oneday')
+    .setDescription('nest-oneday')
+    .setVersion('1.0')
+    .addTag('nest-oneday')
+    .build();
+
+  const document: OpenAPIObject = SwaggerModule.createDocument(
+    app,
+    swaggerConfig,
+  );
+  SwaggerModule.setup('api-docs', app, document);
 
   await app.listen(process.env.PORT ?? 8012);
 }
